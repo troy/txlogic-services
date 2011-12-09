@@ -94,7 +94,7 @@ module Service::PushHelpers
       message << "pushed #{num} new commit#{num > 1 ? 's' : ''} to #{branch_name}"
 
     else
-      message << "pushed nothing"
+#      message << "pushed nothing"
     end
 
     message.join(' ')

@@ -371,13 +371,13 @@ class Service
   #
   # Returns the String URL response from bit.ly.
   def shorten_url(url)
-    res = http_post("http://git.io", :url => url)
-    if res.status == 201
-      res.headers['location']
-    else
-      url
-    end
-  rescue TimeoutError
+#    res = http_post("http://git.io", :url => url)
+#    if res.status == 201
+#      res.headers['location']
+#    else
+#      url
+#    end
+#  rescue TimeoutError
     url
   end
 

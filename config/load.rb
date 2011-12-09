@@ -4,11 +4,11 @@ services_root = File.expand_path('../../', __FILE__)
 if is_production
   # Verify the environment has been bootstrapped by checking that the
   # .bundle/loadpath file exists.
-  if !File.exist?("#{services_root}/.bundle/loadpath")
-    warn "WARN The gem environment is out-of-date or has yet to be bootstrapped."
-    warn "     Run script/bootstrap to remedy this situation."
-    fail "gem environment not configued"
-  end
+  #if !File.exist?("#{services_root}/.bundle/loadpath")
+    #warn "WARN The gem environment is out-of-date or has yet to be bootstrapped."
+    #warn "     Run script/bootstrap to remedy this situation."
+    #fail "gem environment not configued"
+  #end
 else
   # Run a more exhaustive bootstrap check in non-production environments by making
   # sure the Gemfile matches the .bundle/loadpath file checksum.
@@ -58,12 +58,12 @@ binpath = "#{services_root}/bin"
 ENV['PATH'] = "#{binpath}:#{ENV['PATH']}" if !ENV['PATH'].include?(binpath)
 
 # Setup bundled gem load path.
-paths = File.read("#{services_root}/.bundle/loadpath").split("\n")
-paths.each do |path|
-  next if path =~ /^[ \t]*(?:#|$)/
-  path = File.join(services_root, path)
-  $: << path if !$:.include?(path)
-end
+#paths = File.read("#{services_root}/.bundle/loadpath").split("\n")
+#paths.each do |path|
+#  next if path =~ /^[ \t]*(?:#|$)/
+#  path = File.join(services_root, path)
+#  $: << path if !$:.include?(path)
+#end
 
 # Add RAILS_ROOT to load path so you can require config/initializers/file
 # and stuff like that.
