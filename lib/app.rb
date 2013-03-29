@@ -12,7 +12,6 @@ class Service::App < Sinatra::Base
     post "/#{svc.hook_name}/:event" do
       data = nil
       begin
-        puts "received #{params.inspect}"
         data    = JSON.parse(params[:data])
         payload = parse_payload(params[:payload])
         if svc.receive(params[:event], data, payload)
@@ -32,8 +31,9 @@ class Service::App < Sinatra::Base
         status 400
         "Service Timeout"
       rescue Object => boom
-        puts boom.message
-        puts boom.backtrace.join("\n")
+        report_exception svc, data, boom
+        #puts boom.message
+        #puts boom.backtrace.join("\n")
         status 500
         "ERROR"
       end
